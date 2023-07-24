@@ -26,9 +26,14 @@ nav > ul.nav-items {
 .nav-item-list a {
   text-decoration: none;
   font-size: 18px;
+  color:rgb(0, 0, 255)
 }
 
-.active {
+.tab {
+  margin: 0px;
+}
+
+.active > p {
   text-decoration: underline;
   color: brown;
 }
