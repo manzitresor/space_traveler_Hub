@@ -1,9 +1,9 @@
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 nav {
-  background-color: bisque;
+  background-color: rgb(174, 155, 132);
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
@@ -26,11 +26,11 @@ nav > ul.nav-items {
 .nav-item-list a {
   text-decoration: none;
   font-size: 18px;
-  color:rgb(0, 0, 255)
+  color: rgb(0, 0, 255);
 }
 
 .tab {
-  margin: 0px;
+  margin: 0;
 }
 
 .active > p {
