@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout';
-import Home from './pages/Home';
+import Rockets from './pages/Rockets';
 import Profile from './pages/Profile';
 import Missions from './pages/Missions';
 
@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Rockets />} />
           <Route path="profile" element={<Profile />} />
           <Route path="missions" element={<Missions />} />
         </Route>
