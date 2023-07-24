@@ -1,0 +1,8 @@
+nav > img {
+    padding-left: 40px;
+  }
+  
+  nav {
+    background-color: bisque;
+    border-bottom: 1px solid black;
+  }
