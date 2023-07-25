@@ -38,7 +38,6 @@ nav > ul.nav-items {
   color: brown;
 }
 
-
 .rocket-container {
   margin: 20px;
 }
@@ -47,7 +46,7 @@ nav > ul.nav-items {
   display: flex;
 }
 
-.one-rocket img{
+.one-rocket img {
   width: 250px;
   height: 250px;
 }
