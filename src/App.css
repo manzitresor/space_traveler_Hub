@@ -37,3 +37,22 @@ nav > ul.nav-items {
   text-decoration: underline;
   color: brown;
 }
+
+
+.rocket-container {
+  margin: 20px;
+}
+
+.one-rocket {
+  display: flex;
+}
+
+.one-rocket img{
+  width: 250px;
+  height: 250px;
+}
+
+.rocket-card-content {
+  margin-left: 20px;
+  margin-top: 20px;
+}
