@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchRockets } from '../redux/rockets/rocketsSlice';
+import Rocket from './Rocket';
 
 function Rockets() {
   const { data, error, isloading } = useSelector((state) => state.rockets);
@@ -22,11 +23,16 @@ function Rockets() {
       </div>
     );
   }
-  if (data) {
-    console.log(data);
-  }
   return (
-    <div>Rockets</div>
+    <>
+      <div className="main-rockets">
+        {
+          data.map((item) => (
+            <Rocket key={item.id} item={item} />
+          ))
+        }
+      </div>
+    </>
   );
 }
 
