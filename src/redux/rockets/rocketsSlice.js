@@ -21,6 +21,26 @@ const initialState = {
 const rocketsSlice = createSlice({
   name: 'rockets',
   initialState,
+  reducers: {
+    booking: (state, action) => {
+      const bookId = action.payload;
+      state.data = state.data.map((rocket) => {
+        if (rocket.id !== bookId) {
+          return rocket;
+        }
+        return { ...rocket, reserved: true };
+      });
+    },
+    cancelBooking: (state, action) => {
+      const bookId = action.payload;
+      state.data = state.data.map((rocket) => {
+        if (rocket.id !== bookId) {
+          return rocket;
+        }
+        return { ...rocket, reserved: false };
+      });
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRockets.pending, (state) => {
       state.isloading = true;
@@ -31,8 +51,7 @@ const rocketsSlice = createSlice({
         const rockets = {};
         rockets.id = item.id;
         rockets.name = item.rocket_name;
-        rockets.type = item.rocket_type;
-        rockets.image = item.flickr_images;
+        [rockets.image] = item.flickr_images;
         rockets.description = item.description;
         return rockets;
       });
@@ -44,5 +63,7 @@ const rocketsSlice = createSlice({
     });
   },
 });
+
+export const { booking, cancelBooking } = rocketsSlice.actions;
 
 export default rocketsSlice.reducer;

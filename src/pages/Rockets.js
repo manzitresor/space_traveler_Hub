@@ -12,7 +12,7 @@ function Rockets() {
   if (isloading === true) {
     return (
       <div>
-        loading....
+        Loading....
       </div>
     );
   }
