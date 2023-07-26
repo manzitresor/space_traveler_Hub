@@ -3,19 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
 import { useDispatch, useSelector } from 'react-redux';
-import { booking, cancelBooking } from '../redux/rockets/rocketsSlice';
+import { rocketHandler } from '../redux/rockets/rocketsSlice';
 
 function Rocket({ item }) {
   const dispatch = useDispatch();
   const { reserved } = useSelector((state) => state.rockets.data.find((rocket) => rocket.id === item.id));
   const handleReserve = (id) => {
-    dispatch(booking(id));
+    dispatch(rocketHandler(id));
   };
 
   const handleCancelReserve = (id) => {
-    dispatch(cancelBooking(id));
+    dispatch(rocketHandler(id));
   };
   return (
     <>
@@ -23,18 +22,28 @@ function Rocket({ item }) {
         <div className="one-rocket">
           <img src={item.image} alt="rocket" />
           <div className="rocket-card-content">
-            <h1>{item.name}</h1>
-            { reserved ? (
-              <span>
-                {' '}
-                <Badge bg="secondary">reserved</Badge>
-              </span>
-            ) : null }
-            <p>{item.description}</p>
             {
-                !reserved ? (<Button type="submit" onClick={() => handleReserve(item.id)}>Reserve Rocket</Button>)
+                !reserved ? (
+                  <>
+                    {' '}
+                    <div className="reserved">
+                      <h1>{item.name}</h1>
+                      <p>{item.description}</p>
+                    </div>
+                    <Button type="submit" onClick={() => handleReserve(item.id)}>Reserve Rocket</Button>
+                  </>
+                )
                   : (
-                    <Button type="submit" onClick={() => handleCancelReserve(item.id)}> Cancel Reservation</Button>
+                    <>
+                      <div className="reserved">
+                        <h1>{item.name}</h1>
+                        <p>
+                          <button className="reserved-badge" type="submit">reserved</button>
+                          {item.description}
+                        </p>
+                      </div>
+                      <Button type="submit" onClick={() => handleCancelReserve(item.id)} variant="outline-secondary"> Cancel Reservation</Button>
+                    </>
                   )
 
             }
