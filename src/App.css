@@ -55,3 +55,12 @@ nav > ul.nav-items {
   margin-left: 20px;
   margin-top: 20px;
 }
+
+.reserved-badge {
+  background-color: #2f8497;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  margin-right: 10px;
+}

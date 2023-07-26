@@ -1,8 +1,12 @@
 import React from 'react';
+import ReservedRockets from './reservedRockets';
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <>
+      <ReservedRockets />
+
+    </>
   );
 }
 

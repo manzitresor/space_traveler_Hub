@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar Test If Navigations are working 1`] = `
+<p
+  class="tab"
+>
+  Missions
+</p>
+`;
