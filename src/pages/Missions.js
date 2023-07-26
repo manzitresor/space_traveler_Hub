@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { fetchMissions } from '../redux/missions/missionsSlice';
+import { fetchMissions, joinMission, leaveMission } from '../redux/missions/missionsSlice';
 
 const StyledMission = styled.div`
   width: 80vw;
   margin: 20px auto;
+
   table {
     border-collapse: collapse;
+
     th,
     td {
       border: 1px solid lightgray;
       padding: 5px;
     }
+
     .missionButton {
       background-color: white;
       border: 1px solid gray;
       color: gray;
     }
+
     .status {
-      background-color: gray;
       text-align: center;
       color: white;
       border-radius: 5px;
     }
+
     .rows:nth-child(odd) {
       background-color: #f2f2f2;
     }
@@ -33,13 +37,25 @@ const StyledMission = styled.div`
 function Missions() {
   const dispatch = useDispatch();
 
-  const missionsData = useSelector((state) => state.missions.rockets);
-  const missionsStatus = useSelector((state) => state.missions.status);
-  const missionsError = useSelector((state) => state.missions.error);
+  const {
+    missions: missionsData,
+    status: missionsStatus,
+    error: missionsError,
+  } = useSelector((store) => store.missions);
 
   useEffect(() => {
-    dispatch(fetchMissions());
-  }, [dispatch]);
+    if (missionsData.length === 0) {
+      dispatch(fetchMissions());
+    }
+  }, [dispatch, missionsData]);
+
+  const handleJoinMission = (missionId) => {
+    dispatch(joinMission(missionId));
+  };
+
+  const handleLeaveMission = (missionId) => {
+    dispatch(leaveMission(missionId));
+  };
 
   if (missionsStatus === 'loading') {
     return (
@@ -52,6 +68,7 @@ function Missions() {
       <h1 style={{ marginLeft: '40px' }}>{missionsError}</h1>
     );
   }
+
   return (
     <StyledMission>
       <table>
@@ -72,8 +89,31 @@ function Missions() {
             <tr className="rows" key={item.mission_id}>
               <td className="name">{item.mission_name}</td>
               <td className="description">{item.description}</td>
-              <td className="statusColumn"><div className="status">Not A Member</div></td>
-              <td className="buttonColumn"><button type="button" className="missionButton">Join Mission</button></td>
+              <td className="statusColumn">
+                <div style={item.joined ? { backgroundColor: 'green' } : { backgroundColor: 'grey' }} className="status">
+                  {item.joined ? 'Active Member' : 'Not A Member'}
+                </div>
+              </td>
+              <td className="buttonColumn">
+                {item.joined ? (
+                  <button
+                    type="button"
+                    className="missionButton"
+                    style={{ border: '1px solid red', color: 'red' }}
+                    onClick={() => handleLeaveMission(item.mission_id)}
+                  >
+                    Leave Mission
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="missionButton"
+                    onClick={() => handleJoinMission(item.mission_id)}
+                  >
+                    Join Mission
+                  </button>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
