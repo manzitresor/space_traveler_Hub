@@ -15,11 +15,11 @@ const StyledMission = styled.div`
     }
     .missionButton {
       background-color: white;
-      border: 1px solid red;
-      color: red;
+      border: 1px solid gray;
+      color: gray;
     }
     .status {
-      background-color: green;
+      background-color: gray;
       text-align: center;
       color: white;
       border-radius: 5px;
@@ -72,8 +72,8 @@ function Missions() {
             <tr className="rows" key={item.mission_id}>
               <td className="name">{item.mission_name}</td>
               <td className="description">{item.description}</td>
-              <td className="statusColumn"><div className="status">Active Member</div></td>
-              <td className="buttonColumn"><button type="button" className="missionButton">Leave Mission</button></td>
+              <td className="statusColumn"><div className="status">Not A Member</div></td>
+              <td className="buttonColumn"><button type="button" className="missionButton">Join Mission</button></td>
             </tr>
           ))}
         </tbody>
