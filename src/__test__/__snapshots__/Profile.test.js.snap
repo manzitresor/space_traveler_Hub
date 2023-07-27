@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile page testing should render Profile page 1`] = `
+<div>
+  <div
+    class="profile"
+    style="display: flex; justify-content: center; gap: 20px; margin: 20px auto;"
+  >
+    <div
+      class="missions"
+    >
+      <h2
+        class="missions-h1"
+      >
+        My Missions
+      </h2>
+      <ul
+        class="missions-ul"
+        style="list-style-type: none; padding: 0px; margin: 0px;"
+      />
+    </div>
+    <div
+      class="rockets"
+    >
+      <h2
+        class="rockets-h1"
+      >
+        My Rockets
+      </h2>
+    </div>
+  </div>
+</div>
+`;
