@@ -5,7 +5,10 @@ import logo from '../assets/planet.png';
 function Navbar() {
   return (
     <nav>
-      <img className="nav-logo" src={logo} width={40} alt="Navbar logo" />
+      <div className="main-logo">
+        <img className="nav-logo" src={logo} alt="Navbar logo" />
+        <h2>Space Travelers Hub</h2>
+      </div>
       <ul className="nav-items">
         <li className="nav-item-list"><NavLink to="/" activeclassname="active"><p className="tab">Rockets</p></NavLink></li>
         <li className="nav-item-list"><NavLink to="/missions" activeclassname="active"><p className="tab">Missions</p></NavLink></li>

@@ -34,19 +34,8 @@ function Profile() {
             )) }
           </ul>
         </div>
-
-        {/* Replace the hardCoded data in ul elements with data for Reserved Rockets */}
-        <div className="rockets">
-          <h2 className="rockets-h1">My Rockets</h2>
-          <ul style={ulStyles} className="rockets-ul">
-            <li style={listStyles}>One</li>
-            <li style={listStyles}>Two</li>
-            <li style={listStyles}>Three</li>
-          </ul>
-        </div>
+        <ReservedRockets />
       </div>
-      <ReservedRockets />
-      {/* remove this */}
 
     </>
   );
