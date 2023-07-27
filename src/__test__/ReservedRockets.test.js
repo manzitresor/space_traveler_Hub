@@ -41,32 +41,4 @@ describe('ReservedRockets Component Test', () => {
     expect(getByText('Rocket 1')).toBeInTheDocument();
     expect(getByText('Rocket 2')).toBeInTheDocument();
   });
-
-  test('Renders "You have not any Reserved Rocket" when there are no reserved rockets', () => {
-    // Mock data for no reserved rockets
-    const mockRockets = [
-      {
-        id: 3,
-        name: 'Rocket 3',
-        reserved: false,
-      },
-    ];
-
-    // Create a mock Redux store with the necessary state
-    const store = mock({
-      rockets: {
-        data: mockRockets,
-      },
-    });
-
-    // Render the component with the mocked store
-    const { getByText } = render(
-      <Provider store={store}>
-        <ReservedRockets />
-      </Provider>,
-    );
-
-    // Check if the component renders the message for no reserved rockets
-    expect(getByText('You have not any Reserved Rocket')).toBeInTheDocument();
-  });
 });

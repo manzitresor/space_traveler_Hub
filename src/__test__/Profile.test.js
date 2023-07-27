@@ -5,11 +5,11 @@ import store from '../redux/store';
 
 describe('Profile page testing', () => {
   it('should render Profile page', () => {
-    const profile = render(
+    const { container } = render(
       <Provider store={store}>
         <Profile />
       </Provider>,
     );
-    expect(profile).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
